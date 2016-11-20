@@ -53,6 +53,7 @@
     <Compile Include="nodes\MessageNode.cs" />
     <Compile Include="nodes\Node.cs" />
     <Compile Include="nodes\INode.cs" />
+    <Compile Include="nodes\ParametricNode.cs" />
     <Compile Include="order\IItem.cs" />
     <Compile Include="order\Size.cs" />
     <Compile Include="order\Topping.cs" />
