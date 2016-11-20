@@ -1,9 +1,11 @@
 ﻿using IVR.nodes;
+using IVR.order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace IVR
 {
@@ -11,17 +13,16 @@ namespace IVR
     {
         static void Main(string[] args)
         {
-            Call call = new Call("uszanowanko");
+            ToppingsFactory toppingsFactory = new ToppingsFactory();
+            List<Topping> toppings = toppingsFactory.Create();
 
-            ChoiceNode wybor = new ChoiceNode("choice1", "co wybierasz qrwiy ;]", call);
-            MessageNode wiadomosc1 = new MessageNode("wiad1", "wybrales pierwszy wybur", call);
-            MessageNode wiadomosc2 = new MessageNode("wiad2", "wybrales drugi wybur ;]", call);
+            MenuFactory menuFactory = new MenuFactory(toppings);
+            List<Pizza> pizzas = menuFactory.Create();
 
 
-            List<INode> wybory1 = new List<INode> { wiadomosc1, wiadomosc2 };
-            wybor.AddChild(wybory1);
 
-            call.SetStartingNode(wybor);
+            Factory factory = new Factory(toppings,pizzas);
+            Call call = factory.Create();
 
 
             // chalo kurwa robie tutaj zmiane elegancko
