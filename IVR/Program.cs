@@ -19,8 +19,6 @@ namespace IVR
             MenuFactory menuFactory = new MenuFactory(toppings);
             List<Pizza> pizzas = menuFactory.Create();
 
-
-
             Factory factory = new Factory(toppings,pizzas);
             Call call = factory.Create();
 

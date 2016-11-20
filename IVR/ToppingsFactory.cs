@@ -18,8 +18,8 @@ namespace IVR
                     new Topping("magulon"),
                     new Topping("ananas"),
                     new Topping("podwujny ananas ;]]"),
-            }
-            ;
+            };
+            
             return list;
         }
     }

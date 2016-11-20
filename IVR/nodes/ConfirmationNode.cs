@@ -6,35 +6,43 @@ using System.Threading.Tasks;
 
 namespace IVR.nodes
 {
-    class ChoiceNode : Node
+    class ConfirmationNode : Node
     {
         private string message;
-        public ChoiceNode(string nodeName, string message, Call callOwner) : base(nodeName, callOwner)
+        private int confirmationNumber;
+        private INode notConfirmedNode;
+        public ConfirmationNode(string nodeName, string message, Call callOwner, int confirmationNumber) : base(nodeName, callOwner)
         {
             this.nodeName = nodeName;
             this.callOwner = callOwner;
             this.message = message;
+            this.confirmationNumber = confirmationNumber;
         }
 
         protected override void OnEntry()
         {
             Console.WriteLine(message);
-            
+
+        }
+
+        public void SetNotConfirmedNode(INode notConfirmedNode)
+        {
+            this.notConfirmedNode = notConfirmedNode;
         }
 
         public override void OnKeyboard(char input)
         {
             int i = (input - '0');
 
-            if (i < 1 || i > this.GetChildren().Count())
+            if (i == confirmationNumber)
             {
-                Console.WriteLine("podano nieporpawn znak sporboj jeszcze raz");
-                Finish(this.GetNodeName());
+                Finish();
             }
             else
             {
-                Finish(GetChildren()[i-1].GetNodeName());
+                Finish(notConfirmedNode.GetNodeName());
             }
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using IVR.nodes;
+using IVR.order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,10 @@ namespace IVR
 
         INode activeNode;
         INode startingNode;
+        Pizza currentPizza = new Pizza();
 
-        List<INode> nodes=new List<INode>();
+        List<INode> nodes = new List<INode>();
+        List<IItem> items = new List<IItem>();
 
         public Call (string callName)
         {

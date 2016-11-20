@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IVR.prompts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace IVR.order
 {
-    class Pizza 
+    class Pizza : IItem
     {
 
         private string name = "DEFAULT_PIZZA";
-        //name prompt
+        private bool customCreated = false;
+        private Size size;
+        private Prompt prompt;
+
+        
         List<Topping> toppings = new List<Topping>();
 
 
@@ -19,10 +24,24 @@ namespace IVR.order
         {
             this.name = name;
         }
-       
+
+        public Pizza() { }
+         
+        public Pizza(List<Topping> toppings)
+        {
+            this.toppings = toppings;
+            customCreated = true;
+        }
+
         public void AddTopping(Topping topping)
         {
             toppings.Add(topping);
         }
+
+        public Prompt GetPrompt()
+        {
+            return prompt;
+        }
+
     }
 }
