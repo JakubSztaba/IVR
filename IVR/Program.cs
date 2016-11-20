@@ -24,7 +24,7 @@ namespace IVR
             call.SetStartingNode(wybor);
 
 
-            
+            // chalo kurwa robie tutaj zmiane elegancko
 
             call.Run();
 
