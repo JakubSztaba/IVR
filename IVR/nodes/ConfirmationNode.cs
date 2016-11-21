@@ -19,6 +19,15 @@ namespace IVR.nodes
             this.confirmationNumber = confirmationNumber;
         }
 
+        public ConfirmationNode(string nodeName, string message, Call callOwner, int confirmationNumber, prompts.Prompt prompt) : base(nodeName, callOwner)
+        {
+            this.nodeName = nodeName;
+            this.callOwner = callOwner;
+            this.message = message;
+            this.confirmationNumber = confirmationNumber;
+            player.SetPrompt(prompt);
+        }
+
         protected override void OnEntry()
         {
             Console.WriteLine(message);

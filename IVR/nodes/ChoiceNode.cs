@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IVR.prompts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace IVR.nodes
 {
     class ChoiceNode : Node
     {
-        private string message;
+        private string message; 
         public ChoiceNode(string nodeName, string message, Call callOwner) : base(nodeName, callOwner)
         {
             this.nodeName = nodeName;
@@ -16,15 +17,24 @@ namespace IVR.nodes
             this.message = message;
         }
 
+        public ChoiceNode(string nodeName, string message, Call callOwner, prompts.Prompt prompt) : base(nodeName, callOwner)
+        {
+            this.nodeName = nodeName;
+            this.callOwner = callOwner;
+            this.message = message;
+            player.SetPrompt(prompt);
+        }
+
         protected override void OnEntry()
         {
             Console.WriteLine(message);
-            
+           
         }
 
         public override void OnKeyboard(char input)
         {
             int i = (input - '0');
+           
 
             if (i < 1 || i > this.GetChildren().Count())
             {

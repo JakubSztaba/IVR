@@ -49,6 +49,7 @@
     <Compile Include="MenuFactory.cs" />
     <Compile Include="nodes\ChoiceNode.cs" />
     <Compile Include="nodes\ConfirmationNode.cs" />
+    <Compile Include="nodes\DynamicChoiceNode.cs" />
     <Compile Include="nodes\EndNode.cs" />
     <Compile Include="nodes\MessageNode.cs" />
     <Compile Include="nodes\Node.cs" />
@@ -59,7 +60,9 @@
     <Compile Include="order\Topping.cs" />
     <Compile Include="order\Pizza.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="prompts\IPlayer.cs" />
     <Compile Include="prompts\Prompt.cs" />
+    <Compile Include="prompts\PromptPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToppingsFactory.cs" />
   </ItemGroup>

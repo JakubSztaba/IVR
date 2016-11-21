@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IVR.prompts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,9 @@ namespace IVR.nodes
     {
         protected string nodeName;
         protected Call callOwner;
+        protected PromptPlayer player = new PromptPlayer();
+
+
         private List<INode> children = new List<INode>();
 
         public Node (string nodeName, Call callOwner)
@@ -17,6 +21,16 @@ namespace IVR.nodes
             this.nodeName = nodeName;
             this.callOwner = callOwner;
             callOwner.AddNode(this);
+          
+        }
+
+        public Node(string nodeName, Call callOwner, Prompt prompt)
+        {
+            this.nodeName = nodeName;
+            this.callOwner = callOwner;
+            callOwner.AddNode(this);
+            player.SetPrompt(prompt);
+
         }
         public string GetNodeName()
         {
@@ -37,6 +51,7 @@ namespace IVR.nodes
         public void Entry()
         {
             Console.WriteLine(nodeName);
+            
             OnEntry();
         }
         protected abstract void OnEntry();

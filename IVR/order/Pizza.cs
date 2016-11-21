@@ -1,4 +1,5 @@
-﻿using IVR.prompts;
+﻿
+using IVR.prompts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,11 @@ namespace IVR.order
             this.name = name;
         }
 
+        public Pizza(string name, Prompt prompt)
+        {
+            this.name = name;
+            this.prompt = prompt;
+        }
         public Pizza() { }
          
         public Pizza(List<Topping> toppings)
@@ -38,9 +44,25 @@ namespace IVR.order
             toppings.Add(topping);
         }
 
-        public Prompt GetPrompt()
+        public string GetName()
         {
-            return prompt;
+            return name;
+        }
+        public List<Prompt> GetPrompts()
+        {
+            List<Prompt> list = new List<Prompt>();
+            if (customCreated)
+            {
+                foreach (Topping t in toppings)
+                {
+                    list.AddRange(t.GetPrompts());
+                }
+            }
+            else
+            {
+                list.Add(prompt);
+            }
+            return list;
         }
 
     }

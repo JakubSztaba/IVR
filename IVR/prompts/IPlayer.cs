@@ -1,16 +1,14 @@
-﻿
-using IVR.prompts;
+﻿using IVR.order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IVR.order
+namespace IVR.prompts
 {
-    interface IItem
+    public interface IPlayer
     {
-        List<Prompt> GetPrompts();
-
+        void Play();
     }
 }

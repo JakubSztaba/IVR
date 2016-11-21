@@ -1,5 +1,6 @@
 ﻿using IVR.nodes;
 using IVR.order;
+using IVR.prompts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,16 @@ namespace IVR
         INode activeNode;
         INode startingNode;
         Pizza currentPizza = new Pizza();
+        Factory owner;
 
         List<INode> nodes = new List<INode>();
         List<IItem> items = new List<IItem>();
 
-        public Call (string callName)
+        public Call (string callName, Factory owner)
         {
             this.callName = callName;
+            this.owner = owner;
+
         }
 
         public void AddNode(INode node)
@@ -58,6 +62,17 @@ namespace IVR
             {
                 Console.WriteLine("skaszanilo sie");
             }
+        }
+
+        public void PickFromMenu(int i)
+        {
+            currentPizza = owner.GetPizzas()[i - 1];
+            Console.WriteLine(currentPizza.GetName());
+        }
+
+        public Pizza GetPizza()
+        {
+            return currentPizza;
         }
 
 

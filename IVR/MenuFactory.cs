@@ -20,8 +20,8 @@ namespace IVR
         public List<Pizza> Create()
         {
             List<Pizza> list = new List<Pizza>();
-            
-               list.Add(CreatePizza(new List<string> {"ser","szynka" },"margarita :>"));
+               
+               list.Add(CreatePizza(new List<string>() {"ser","szynka" },"margarita :>", new prompts.Prompt("gun.wav")));
             
 
             
@@ -38,10 +38,10 @@ namespace IVR
 
 
 
-        private Pizza CreatePizza(List<string> tlist,string name)
+        private Pizza CreatePizza(List<string> tlist,string name,prompts.Prompt prompt)
         {
 
-            Pizza pizza = new Pizza(name);
+            Pizza pizza = new Pizza(name , prompt);
 
             foreach (string element in tlist)
             {

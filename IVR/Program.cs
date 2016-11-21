@@ -1,5 +1,6 @@
 ﻿using IVR.nodes;
 using IVR.order;
+using IVR.prompts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,18 @@ namespace IVR
     {
         static void Main(string[] args)
         {
+
+            List<Prompt> chuj = new List<Prompt>() { new Prompt("gun.wav"), new Prompt("gun1.wav") };
+            PromptPlayer p = new PromptPlayer(chuj);
+            p.ThreadPlay();
+            Console.WriteLine("chuj do dupy");
+            Console.ReadLine();
+            p.ThreadStop();
+            Console.WriteLine("chuj do dup2");
+            Console.ReadLine();
+
+
+            /*
             ToppingsFactory toppingsFactory = new ToppingsFactory();
             List<Topping> toppings = toppingsFactory.Create();
 
@@ -29,7 +42,7 @@ namespace IVR
 
             while (true)
                 call.OnKeyboard(Console.ReadKey().KeyChar);
-
+*/
 
 
         }

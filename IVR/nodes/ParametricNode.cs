@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IVR.prompts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,19 @@ namespace IVR.nodes
             this.range = range;
             this.action = action;
         }
+        public ParametricNode(string nodeName, string message, Call callOwner, List<int> range, Action<int> action, Prompt prompt) : base(nodeName, callOwner,prompt)
+        {
+            this.nodeName = nodeName;
+            this.callOwner = callOwner;
+            this.message = message;
+            this.range = range;
+            this.action = action;
+            player.SetPrompt(prompt);
 
+        }
         protected override void OnEntry()
         {
+
             Console.WriteLine(message);
 
         }
@@ -34,6 +45,7 @@ namespace IVR.nodes
             if (range.Contains(i))
             {
                 //tutaj magia
+                action(i);
                 Finish();
             }
             else
